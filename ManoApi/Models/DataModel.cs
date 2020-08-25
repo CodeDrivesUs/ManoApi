@@ -14,6 +14,8 @@ namespace ManoApi.Models
         }
         public System.Data.Entity.DbSet<ManoApi.Models.Category> Categories { get; set; }
         public DbSet<Stores> Stores { get; set; }
+        public DbSet<Cart> carts  { get; set; }
+        public DbSet<CartItem> cartItems  { get; set; }
         public System.Data.Entity.DbSet<ManoApi.Models.SubCategory> SubCategories { get; set; }
         public System.Data.Entity.DbSet<ManoApi.Models.Brands> Brands { get; set; }
         public System.Data.Entity.DbSet<ManoApi.Models.Product> Products { get; set; }

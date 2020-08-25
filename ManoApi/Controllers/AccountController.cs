@@ -23,6 +23,7 @@ namespace ManoApi.Controllers
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
+        private DataModel db = new DataModel();
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
@@ -340,6 +341,11 @@ namespace ManoApi.Controllers
             return Ok();
         }
 
+        public void Createcart(string userid)
+        {
+            db.carts.Add(new Cart { DateCreated = DateTime.Now, UserId = userid });
+            db.SaveChanges();
+        }
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]

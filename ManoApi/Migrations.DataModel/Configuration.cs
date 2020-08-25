@@ -9,7 +9,7 @@ namespace ManoApi.Migrations.DataModel
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             MigrationsDirectory = @"Migrations.DataModel";
         }
 

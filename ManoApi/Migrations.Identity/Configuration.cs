@@ -9,7 +9,7 @@ namespace ManoApi.Migrations.Identity
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             MigrationsDirectory = @"Migrations.Identity";
         }
 
