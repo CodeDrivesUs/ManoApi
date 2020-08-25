@@ -98,6 +98,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
@@ -265,9 +266,11 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccountLocalController.cs" />
+    <Compile Include="Controllers\BrandsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\StoresApiController.cs" />
     <Compile Include="Controllers\StoresController.cs" />
@@ -276,28 +279,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008071755239_InitialCreate.cs" />
-    <Compile Include="Migrations\202008071755239_InitialCreate.Designer.cs">
-      <DependentUpon>202008071755239_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations.DataModel\Configuration.cs" />
+    <Compile Include="Migrations.Identity\202008221259597_initialCreate.cs" />
+    <Compile Include="Migrations.Identity\202008221259597_initialCreate.Designer.cs">
+      <DependentUpon>202008221259597_initialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008072041232_jfjgfj.cs" />
-    <Compile Include="Migrations\202008072041232_jfjgfj.Designer.cs">
-      <DependentUpon>202008072041232_jfjgfj.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008131842363_sfbjebdb.cs" />
-    <Compile Include="Migrations\202008131842363_sfbjebdb.Designer.cs">
-      <DependentUpon>202008131842363_sfbjebdb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations.Identity\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountLocalViewModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Brands.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ClientViewModels.cs" />
+    <Compile Include="Models\DataModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Stores.cs" />
     <Compile Include="Models\SubCategory.cs" />
+    <Compile Include="Models\ViewModels\ProductViewModel.cs" />
+    <Compile Include="Models\ViewModels\StoreVm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -453,6 +453,12 @@
     <Content Include="Views\SubCategories\Details.cshtml" />
     <Content Include="Views\SubCategories\Edit.cshtml" />
     <Content Include="Views\SubCategories\Index.cshtml" />
+    <Content Include="Views\Manager\Index.cshtml" />
+    <Content Include="Views\Brands\Create.cshtml" />
+    <Content Include="Views\Brands\Delete.cshtml" />
+    <Content Include="Views\Brands\Details.cshtml" />
+    <Content Include="Views\Brands\Edit.cshtml" />
+    <Content Include="Views\Brands\Index.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
@@ -492,14 +498,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008071755239_InitialCreate.resx">
-      <DependentUpon>202008071755239_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008072041232_jfjgfj.resx">
-      <DependentUpon>202008072041232_jfjgfj.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008131842363_sfbjebdb.resx">
-      <DependentUpon>202008131842363_sfbjebdb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations.Identity\202008221259597_initialCreate.resx">
+      <DependentUpon>202008221259597_initialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

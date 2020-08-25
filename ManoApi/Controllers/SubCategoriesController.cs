@@ -12,7 +12,7 @@ namespace ManoApi.Controllers
 {
     public class SubCategoriesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private DataModel db = new DataModel();
 
         // GET: SubCategories
         public ActionResult Index()
@@ -52,6 +52,7 @@ namespace ManoApi.Controllers
         {
             if (ModelState.IsValid)
             {
+                subCategory.Status = "Offline";
                 db.SubCategories.Add(subCategory);
                 db.SaveChanges();
                 return RedirectToAction("Index");

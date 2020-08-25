@@ -12,8 +12,7 @@ namespace ManoApi.Controllers
 {
     public class CategoriesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
+        private DataModel db = new DataModel();
         // GET: Categories
         public ActionResult Index()
         {
@@ -52,6 +51,7 @@ namespace ManoApi.Controllers
         {
             if (ModelState.IsValid)
             {
+                category.Status = "Offline";
                 db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");

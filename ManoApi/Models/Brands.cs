@@ -6,15 +6,14 @@ using System.Web;
 
 namespace ManoApi.Models
 {
-    public class Stores
+    public class Brands
     {
         [Key]
+        public int BrandId { get; set; }
         public int StoreId { get; set; }
-     
+        [Display(Name="Name Of Brand")]
         public string Name { get; set; }
-        public string address { get; set; }
-        public string status { get; set; }
-        public byte[] Image { get; set; }
-      
+        public virtual Stores Stores { get; set; }
+
     }
 }

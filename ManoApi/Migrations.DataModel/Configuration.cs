@@ -1,19 +1,19 @@
-namespace ManoApi.Migrations
+namespace ManoApi.Migrations.DataModel
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ManoApi.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ManoApi.Models.DataModel>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "ManoApi.Models.ApplicationDbContext";
+            MigrationsDirectory = @"Migrations.DataModel";
         }
 
-        protected override void Seed(ManoApi.Models.ApplicationDbContext context)
+        protected override void Seed(ManoApi.Models.DataModel context)
         {
             //  This method will be called after migrating to the latest version.
 

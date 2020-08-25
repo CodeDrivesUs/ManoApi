@@ -32,16 +32,12 @@ namespace ManoApi.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        public DbSet<Stores> Stores { get; set; }
+      
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<ManoApi.Models.Category> Categories { get; set; }
-
-        public System.Data.Entity.DbSet<ManoApi.Models.SubCategory> SubCategories { get; set; }
-
-        public System.Data.Entity.DbSet<ManoApi.Models.Product> Products { get; set; }
+      
     }
 }

@@ -12,12 +12,11 @@ namespace ManoApi.Controllers
 {
     public class ProductsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
+        private DataModel db = new DataModel();
         // GET: Products
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Category).Include(p => p.SubCategory);
+            var products = db.Products.Include(p => p.Brands).Include(p => p.Category).Include(p => p.SubCategory);
             return View(products.ToList());
         }
 
@@ -39,6 +38,7 @@ namespace ManoApi.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
+            ViewBag.BrandId = new SelectList(db.Brands, "BrandId", "Name");
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
             ViewBag.SubCategoryId = new SelectList(db.SubCategories, "SubCategoryId", "SubCatName");
             return View();
@@ -49,15 +49,24 @@ namespace ManoApi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,SubCategoryId,CategoryId,Name,Description,UnitCost,Image,Status")] Product product)
+        public ActionResult Create([Bind(Include = "ProductId,SubCategoryId,CategoryId,Name,BrandId,Description,UnitCost,Image,Status")] Product product, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    int filelength = upload.ContentLength;
+                    byte[] imageBytes = new byte[filelength];
+                    upload.InputStream.Read(imageBytes, 0, filelength);
+                    product.Image = imageBytes;
+                    product.Status = "Offline";
+                    db.Products.Add(product);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
 
+            ViewBag.BrandId = new SelectList(db.Brands, "BrandId", "Name", product.BrandId);
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", product.CategoryId);
             ViewBag.SubCategoryId = new SelectList(db.SubCategories, "SubCategoryId", "SubCatName", product.SubCategoryId);
             return View(product);
@@ -75,6 +84,7 @@ namespace ManoApi.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.BrandId = new SelectList(db.Brands, "BrandId", "Name", product.BrandId);
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", product.CategoryId);
             ViewBag.SubCategoryId = new SelectList(db.SubCategories, "SubCategoryId", "SubCatName", product.SubCategoryId);
             return View(product);
@@ -85,7 +95,7 @@ namespace ManoApi.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,SubCategoryId,CategoryId,Name,Description,UnitCost,Image,Status")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductId,SubCategoryId,CategoryId,Name,BrandId,Description,UnitCost,Image,Status")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -93,6 +103,7 @@ namespace ManoApi.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.BrandId = new SelectList(db.Brands, "BrandId", "Name", product.BrandId);
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", product.CategoryId);
             ViewBag.SubCategoryId = new SelectList(db.SubCategories, "SubCategoryId", "SubCatName", product.SubCategoryId);
             return View(product);

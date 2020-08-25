@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ManoApi.Models.Brands>
+
+@{
+    ViewBag.Title = "Brands";
+    Layout = "~/Views/Shared/_LayoutStore.cshtml";
+}
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Brands</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                           
+                            <li><a href="#">Blands</a></li>
+                            <li class="active">List All</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="animated fadeIn">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title text-center">List Of All Brands</strong>
+                    </div>
+                    <div class="card-body">
+                        <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                @foreach (var item in Model)
+                                {
+                        <tbody>
+                            <tr>
+                                
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td style="color:white;">
+                                    <p class="btn btn-outline-secondary text-white"> @Html.ActionLink("Edit", "Edit", new { id = item.BrandId }) </p>
+                                    <p class="btn btn-outline-success">  @Html.ActionLink("Details", "Details", new { id = item.BrandId })</p>
+                                    <p class="btn btn-danger">  @Html.ActionLink("Delete", "Delete", new { id = item.BrandId })</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                                }
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div><!-- .animated -->
+</div><!-- .content -->

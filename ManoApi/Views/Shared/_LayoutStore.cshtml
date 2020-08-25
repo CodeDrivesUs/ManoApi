@@ -34,24 +34,19 @@
         #weatherWidget .currentDesc {
             color: #ffffff !important;
         }
-
         .traffic-chart {
             min-height: 335px;
         }
-
         #flotPie1 {
             height: 150px;
         }
-
             #flotPie1 td {
                 padding: 3px;
             }
-
             #flotPie1 table {
                 top: 20px !important;
                 right: -10px !important;
             }
-
         .chart-container {
             display: table;
             min-width: 270px;
@@ -59,15 +54,12 @@
             padding-top: 10px;
             padding-bottom: 10px;
         }
-
         #flotLine5 {
             height: 105px;
         }
-
         #flotBarChart {
             height: 150px;
         }
-
         #cellPaiChart {
             height: 160px;
         }
@@ -83,42 +75,40 @@
                     <li class="active">
                         <a href="index.html"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li>
-                    <li class="menu-title">UI elements</li><!-- /.menu-title -->
+                    <li class="menu-title">Products</li><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Components</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Brands</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Badges</a></li>
-                            <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Tabs</a></li>
+                            <li><i class="fa fa-puzzle-piece"></i><a href="/Brands">List All</a></li>
+                            <li><i class="fa fa-puzzle-piece"></i><a href="/Brands/Create">Create New</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Categories</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-table"></i><a href="/categories/">List All</a></li>
+                            <li><i class="fa fa-table"></i><a href="/categories/Create">Create New</a></li>
 
-                            <li><i class="fa fa-id-card-o"></i><a href="ui-cards.html">Cards</a></li>
-                            <li><i class="fa fa-exclamation-triangle"></i><a href="ui-alerts.html">Alerts</a></li>
-                            <li><i class="fa fa-spinner"></i><a href="ui-progressbar.html">Progress Bars</a></li>
-                            <li><i class="fa fa-fire"></i><a href="ui-modals.html">Modals</a></li>
-                            <li><i class="fa fa-book"></i><a href="ui-switches.html">Switches</a></li>
-                            <li><i class="fa fa-th"></i><a href="ui-grids.html">Grids</a></li>
-                            <li><i class="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Typography</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>SubCategories</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="/Subcategories">List All</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="/SubCategories/Create">Create New</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Products</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Advanced Form</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="/Products">List All</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="/products/Create">Create New</a></li>
                         </ul>
                     </li>
-
                     <li class="menu-title">Icons</li><!-- /.menu-title -->
 
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Icons</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Product</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-fort-awesome"></i><a href="font-fontawesome.html">Font Awesome</a></li>
                             <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Themefy Icons</a></li>
@@ -268,7 +258,7 @@
         <div class="content">
             <!-- Animated -->
             <div class="animated fadeIn">
-             @RenderBody()
+                @RenderBody()
             </div>
             <!-- .animated -->
         </div>
@@ -314,7 +304,23 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
     <script src="~/assets/js/init/fullcalendar-init.js"></script>
+    <script src="~/assets/js/lib/data-table/datatables.min.js"></script>
+    <script src="~/assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+    <script src="~/assets/js/lib/data-table/dataTables.buttons.min.js"></script>
+    <script src="~/assets/js/lib/data-table/buttons.bootstrap.min.js"></script>
+    <script src="~/assets/js/lib/data-table/jszip.min.js"></script>
+    <script src="~/assets/js/lib/data-table/vfs_fonts.js"></script>
+    <script src="~/assets/js/lib/data-table/buttons.html5.min.js"></script>
+    <script src="~/assets/js/lib/data-table/buttons.print.min.js"></script>
+    <script src="~/assets/js/lib/data-table/buttons.colVis.min.js"></script>
+    <script src="~/assets/js/init/datatables-init.js"></script>
 
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#bootstrap-data-table-export').DataTable();
+        });
+    </script>
     <!--Local Stuff-->
     <script>
         jQuery(document).ready(function ($) {

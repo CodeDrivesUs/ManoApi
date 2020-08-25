@@ -9,12 +9,12 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ManoApi.Models;
-
+using ManoApi.Models.ViewModels;
 namespace ManoApi.Controllers
 {
     public class StoresApiController : ApiController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private DataModel db = new DataModel();
 
         // GET: api/StoresApi
         public List<StoreVm> GetStores()
@@ -30,15 +30,25 @@ namespace ManoApi.Controllers
 
         // GET: api/StoresApi/5
         [ResponseType(typeof(Stores))]
-        public IHttpActionResult GetStores(int id)
+        public StoreViewModel GetStores(int id)
         {
-            Stores stores = db.Stores.Find(id);
-            if (stores == null)
+            var cat = db.Categories.Where(x => x.StoreId == id).ToList();
+            var subCat = new List<SubCategory>();
+            var prod = new List<Product>();
+            foreach (var item in cat )
             {
-                return NotFound();
+                foreach(SubCategory subCategory in db.SubCategories.Where(x => x.CategoryId == item.CategoryId).ToList())
+                {
+                    subCat.Add(subCategory);
+                    foreach(Product product in db.Products.Where(x => x.SubCategoryId == subCategory.SubCategoryId).ToList())
+                    {
+                        prod.Add(product);
+                    }
+                }     
             }
+            var store = new StoreViewModel { Categories=cat, Products=prod, SubCategories=subCat };
 
-            return Ok(stores);
+            return store;
         }
 
         // PUT: api/StoresApi/5

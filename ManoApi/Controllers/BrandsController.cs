@@ -8,117 +8,114 @@ using System.Web;
 using System.Web.Mvc;
 using ManoApi.Models;
 
-namespace ManoApp.Controllers
+namespace ManoApi.Controllers
 {
-    public class StoresController : Controller
+    public class BrandsController : Controller
     {
-        private DataModel db = new DataModel();
+        private DataModel db = new  DataModel();
 
-        // GET: Stores
+        // GET: Brands
         public ActionResult Index()
         {
-            return View(db.Stores.ToList());
+            var brands = db.Brands.Include(b => b.Stores);
+            return View(brands.ToList());
         }
 
-        // GET: Stores/Details/5
+        // GET: Brands/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stores stores = db.Stores.Find(id);
-            if (stores == null)
+            Brands brands = db.Brands.Find(id);
+            if (brands == null)
             {
                 return HttpNotFound();
             }
-            return View(stores);
+            return View(brands);
         }
 
-        // GET: Stores/Create
+        // GET: Brands/Create
         public ActionResult Create()
         {
+            ViewBag.StoreId = new SelectList(db.Stores, "StoreId", "Name");
             return View();
         }
 
-        // POST: Stores/Create
+        // POST: Brands/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StoreId,Name,address,status,Image")] Stores stores, HttpPostedFileBase upload)
+        public ActionResult Create([Bind(Include = "BrandId,StoreId,Name")] Brands brands)
         {
             if (ModelState.IsValid)
             {
-                if (upload != null && upload.ContentLength > 0)
-                {
-                    int filelength = upload.ContentLength;
-                    byte[] imageBytes = new byte[filelength];
-                    upload.InputStream.Read(imageBytes, 0, filelength);
-                    stores.Image = imageBytes;
-                    stores.status = "Active";
-                    db.Stores.Add(stores);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+                db.Brands.Add(brands);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-            return View(stores);
+            ViewBag.StoreId = new SelectList(db.Stores, "StoreId", "Name", brands.StoreId);
+            return View(brands);
         }
 
-        // GET: Stores/Edit/5
+        // GET: Brands/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stores stores = db.Stores.Find(id);
-            if (stores == null)
+            Brands brands = db.Brands.Find(id);
+            if (brands == null)
             {
                 return HttpNotFound();
             }
-            return View(stores);
+            ViewBag.StoreId = new SelectList(db.Stores, "StoreId", "Name", brands.StoreId);
+            return View(brands);
         }
 
-        // POST: Stores/Edit/5
+        // POST: Brands/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StoreId,Name,address,status,Image")] Stores stores)
+        public ActionResult Edit([Bind(Include = "BrandId,StoreId,Name")] Brands brands)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(stores).State = EntityState.Modified;
+                db.Entry(brands).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(stores);
+            ViewBag.StoreId = new SelectList(db.Stores, "StoreId", "Name", brands.StoreId);
+            return View(brands);
         }
 
-        // GET: Stores/Delete/5
+        // GET: Brands/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stores stores = db.Stores.Find(id);
-            if (stores == null)
+            Brands brands = db.Brands.Find(id);
+            if (brands == null)
             {
                 return HttpNotFound();
             }
-            return View(stores);
+            return View(brands);
         }
 
-        // POST: Stores/Delete/5
+        // POST: Brands/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Stores stores = db.Stores.Find(id);
-            db.Stores.Remove(stores);
+            Brands brands = db.Brands.Find(id);
+            db.Brands.Remove(brands);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
