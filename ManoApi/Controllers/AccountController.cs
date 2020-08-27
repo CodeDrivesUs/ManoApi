@@ -322,6 +322,7 @@ namespace ManoApi.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
+        [HttpPost]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
         {
             if (!ModelState.IsValid)
