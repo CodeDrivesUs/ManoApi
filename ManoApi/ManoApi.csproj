@@ -279,6 +279,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccountLocalController.cs" />
     <Compile Include="Controllers\BrandsController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CartItemsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
@@ -302,14 +303,6 @@
       <DependentUpon>202008251429449_initalfsdgf.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations.DataModel\Configuration.cs" />
-    <Compile Include="Migrations.Identity\202008221259597_initialCreate.cs" />
-    <Compile Include="Migrations.Identity\202008221259597_initialCreate.Designer.cs">
-      <DependentUpon>202008221259597_initialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations.Identity\202008251659318_skvkehskdv.cs" />
-    <Compile Include="Migrations.Identity\202008251659318_skvkehskdv.Designer.cs">
-      <DependentUpon>202008251659318_skvkehskdv.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations.Identity\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountLocalViewModels.cs" />
@@ -679,12 +672,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations.DataModel\202008251429449_initalfsdgf.resx">
       <DependentUpon>202008251429449_initalfsdgf.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations.Identity\202008221259597_initialCreate.resx">
-      <DependentUpon>202008221259597_initialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations.Identity\202008251659318_skvkehskdv.resx">
-      <DependentUpon>202008251659318_skvkehskdv.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -58,7 +58,6 @@ namespace ManoApi.Controllers
         public UserInfoViewModel GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
-
             return new UserInfoViewModel
             {
                 Email = User.Identity.GetUserName(),
@@ -338,6 +337,7 @@ namespace ManoApi.Controllers
             {
                 return GetErrorResult(result);
             }
+            Createcart(user.Id);
 
             return Ok();
         }

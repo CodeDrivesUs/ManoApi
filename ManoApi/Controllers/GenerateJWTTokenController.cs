@@ -8,6 +8,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
 using ManoApi.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace ManoApi.Controllers
@@ -45,13 +47,13 @@ namespace ManoApi.Controllers
             userRequest.Username = user.Username.ToLower();
             userRequest.Password = user.Password;
             IHttpActionResult response;              
-            var result = await UserManager.FindAsync(user.Username, user.Password);
-            //if credentials are valid
+            var result = await UserManager.FindAsync(user.Username, user.Password);         
             if (result != null)
             {
+                var userid = result.Id;
                 string token = createToken(userRequest.Username);
                 //return the token
-                return Ok<string>(token);
+                return Ok<LoginToken>(new LoginToken { UserId = userid, accesss_token=token});
             }
             else
             {

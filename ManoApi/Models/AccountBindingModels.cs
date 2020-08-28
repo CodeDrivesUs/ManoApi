@@ -38,6 +38,11 @@ namespace ManoApi.Models
         public string Username { get; set; }
         public string Password { get; set; }
     }
+    public class LoginToken
+    {
+        public string UserId { get; set; }
+        public string accesss_token { get; set; }
+    }
     public class UserResponse
     {
         public HttpResponseMessage responseMsg { get; set; }

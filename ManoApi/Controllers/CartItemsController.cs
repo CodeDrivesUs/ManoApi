@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ManoApi.Models;
-
+using Microsoft.AspNet.Identity;
 namespace ManoApi.Controllers
 {
     public class CartItemsController : ApiController
@@ -20,13 +20,14 @@ namespace ManoApi.Controllers
         public IQueryable<CartItem> GetcartItems(int id)
         {
             return db.cartItems.Where(x=>x.CartId==id);
+
         }
 
         // GET: api/CartItems/5
         [ResponseType(typeof(CartItem))]
-        public IHttpActionResult GetCartItem(int id)
+        public IHttpActionResult GetCartItem()
         {
-            CartItem cartItem = db.cartItems.Find(id);
+            CartItem cartItem = db.cartItems.Find(453);
             if (cartItem == null)
             {
                 return NotFound();
