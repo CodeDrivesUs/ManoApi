@@ -20,7 +20,7 @@ namespace ManoApi
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-
+            config.MessageHandlers.Add(new ValidateTokenHandler());
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

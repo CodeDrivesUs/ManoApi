@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace ManoApi.Models
 {
@@ -32,6 +33,15 @@ namespace ManoApi.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class UserRequest
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+    public class UserResponse
+    {
+        public HttpResponseMessage responseMsg { get; set; }
+    }
     public class RegisterBindingModel
     {
         [Required]
