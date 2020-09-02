@@ -7,13 +7,13 @@ namespace ManoApi.Migrations.DataModel
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class initalfsdgf : IMigrationMetadata
+    public sealed partial class initissbkfb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initalfsdgf));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initissbkfb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008251429449_initalfsdgf"; }
+            get { return "202008282123314_initissbkfb"; }
         }
         
         string IMigrationMetadata.Source

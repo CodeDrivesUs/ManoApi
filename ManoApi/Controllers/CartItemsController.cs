@@ -17,9 +17,19 @@ namespace ManoApi.Controllers
         private DataModel db = new DataModel();
 
         // GET: api/CartItems
-        public IQueryable<CartItem> GetcartItems(int id)
+        [Authorize]
+        public List<CartItem> GetcartItems(int id, string userid)
         {
-            return db.cartItems.Where(x=>x.CartId==id);
+            var list= new List<CartItem>();
+            Cart cart = db.carts.Find(id);
+            if (cart.UserId == userid)
+            {
+                return db.cartItems.Where(x => x.CartId == id).ToList();
+            }
+            else
+            {
+                return list;
+            }
 
         }
 

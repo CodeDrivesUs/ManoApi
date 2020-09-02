@@ -294,13 +294,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations.DataModel\202008251252127_inital.cs" />
-    <Compile Include="Migrations.DataModel\202008251252127_inital.Designer.cs">
-      <DependentUpon>202008251252127_inital.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations.DataModel\202008251429449_initalfsdgf.cs" />
-    <Compile Include="Migrations.DataModel\202008251429449_initalfsdgf.Designer.cs">
-      <DependentUpon>202008251429449_initalfsdgf.cs</DependentUpon>
+    <Compile Include="Migrations.DataModel\202008282123314_initissbkfb.cs" />
+    <Compile Include="Migrations.DataModel\202008282123314_initissbkfb.Designer.cs">
+      <DependentUpon>202008282123314_initissbkfb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations.DataModel\Configuration.cs" />
     <Compile Include="Migrations.Identity\Configuration.cs" />
@@ -667,11 +663,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations.DataModel\202008251252127_inital.resx">
-      <DependentUpon>202008251252127_inital.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations.DataModel\202008251429449_initalfsdgf.resx">
-      <DependentUpon>202008251429449_initalfsdgf.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations.DataModel\202008282123314_initissbkfb.resx">
+      <DependentUpon>202008282123314_initissbkfb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

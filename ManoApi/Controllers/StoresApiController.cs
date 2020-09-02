@@ -34,7 +34,7 @@ namespace ManoApi.Controllers
         {
             var cat = db.Categories.Where(x => x.StoreId == id).ToList();
             var subCat = new List<SubCategory>();
-            var prod = new List<Product>();
+            var prod = new List<ProductViewModel>();
             foreach (var item in cat )
             {
                 foreach(SubCategory subCategory in db.SubCategories.Where(x => x.CategoryId == item.CategoryId).ToList())
@@ -42,12 +42,16 @@ namespace ManoApi.Controllers
                     subCat.Add(subCategory);
                     foreach(Product product in db.Products.Where(x => x.SubCategoryId == subCategory.SubCategoryId).ToList())
                     {
-                        prod.Add(product);
+                        var base64 = Convert.ToBase64String(product.Image);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        prod.Add(new ProductViewModel { ProductId=product.ProductId, BrandId=product.BrandId, Brands=product.Brands, 
+                        Category=product.Category, CategoryId=product.CategoryId,
+                        Description=product.Description, Name=product.Name, Status=product.Status, SubCategory=product.SubCategory, 
+                        UnitCost=product.UnitCost, SubCategoryId=product.SubCategoryId , Image= imgSrc  });
                     }
                 }     
             }
             var store = new StoreViewModel { Categories=cat, Products=prod, SubCategories=subCat };
-
             return store;
         }
 

@@ -9,6 +9,6 @@ namespace ManoApi.Models.ViewModels
     {
         public List<Category>  Categories  { get; set; }
         public List<SubCategory>  SubCategories { get; set; }
-        public List<Product>  Products { get; set; }
+        public List<ProductViewModel>  Products { get; set; }
     }
 }
